@@ -26,7 +26,7 @@ class Site(Resource):
 		except:
 			return {"message": "An internal error occurred trying to create new site"}, 500, # database saving problem
 		return site.json()
-
+		
 
 	def delete(self,url):
 		site = SiteModel.find_site(url)
