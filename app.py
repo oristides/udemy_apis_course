@@ -3,7 +3,7 @@ from flask_restful import  Api
 
 #Re esources
 from resources.hotel import Hoteis, Hotel
-from resources.usuario import User, UserRegister, UserLogin, UserLogout
+from resources.usuario import User, UserRegister, UserLogin, UserLogout, UserConfirm
 from resources.site import Sites, Site
 from flask_jwt_extended import JWTManager
 from blacklist import BLACKLIST
@@ -38,6 +38,7 @@ api.add_resource(UserLogin, '/login')
 api.add_resource(UserLogout, '/logout')
 api.add_resource(Sites, '/sites')
 api.add_resource(Site, '/site/<string:url>')
+api.add_resource(UserConfirm, '/confirmacao/<int:user_id>')
 
 
 
