@@ -103,7 +103,7 @@ class UserConfirm(Resource):
 	@classmethod
 	def get(cls,user_id):
 		user = UserModel.find_user(user_id)
-
+		
 		if not user:
 			return{'message':"User id '{}' not found".format(user_id)}, 404
 
