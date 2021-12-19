@@ -20,7 +20,7 @@ app.config['JWT_SECRET_KEY'] = 'DontTellAnyone'
 api = Api(app)
 jwt = JWTManager(app)
 
-@app.route('/.')
+@app.route('/')
 def index():
 	return '<h1>Bem vindo !</h1>'
 
