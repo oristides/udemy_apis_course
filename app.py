@@ -1,5 +1,7 @@
 from flask import Flask
 from flask_restful import  Api
+from sql_alchemy import banco
+
 
 #Re esources
 from resources.hotel import Hoteis, Hotel
@@ -9,6 +11,7 @@ from flask_jwt_extended import JWTManager
 from blacklist import BLACKLIST
 
 app = Flask(__name__)
+banco.init_app(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///banco.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['JWT_SECRET_KEY'] = 'DontTellAnyone'
@@ -16,6 +19,10 @@ app.config['JWT_SECRET_KEY'] = 'DontTellAnyone'
 
 api = Api(app)
 jwt = JWTManager(app)
+
+@app.route('/.')
+def index():
+	return '<h1>Bem vindo !</h1>'
 
 @app.before_first_request
 def cria_banco():
@@ -40,13 +47,6 @@ api.add_resource(Sites, '/sites')
 api.add_resource(Site, '/site/<string:url>')
 api.add_resource(UserConfirm, '/confirmacao/<int:user_id>')
 
-
-
-if __name__== '__main__':
-	from sql_alchemy import banco
-	
-	banco.init_app(app)
-	app.run(debug=True)
 
 
 #http://127.0.0.1:5000/hoteis
