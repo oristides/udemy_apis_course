@@ -11,11 +11,11 @@ from flask_jwt_extended import JWTManager
 from blacklist import BLACKLIST
 
 app = Flask(__name__)
-banco.init_app(app)
+
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///banco.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['JWT_SECRET_KEY'] = 'DontTellAnyone'
-
+banco.init_app(app)
 
 api = Api(app)
 jwt = JWTManager(app)
