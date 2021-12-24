@@ -40,14 +40,14 @@ class Hoteis(Resource):
 
 			tupla = tuple([parametros[chave] for chave in parametros])
 			cursor.execute(consulta_sem_cidade, tupla)
-			resultado = cursor.fetch_all() 
+			resultado = cursor.fetchall() 
 
 		else:
 
 			
 			tupla = tuple([parametros[chave] for chave in parametros])
 			cursor.execute(consulta_com_cidade, tupla)
-			resultado = cursor.fetch_all()
+			resultado = cursor.fetchall()
 			
 		
 		hoteis=[]
