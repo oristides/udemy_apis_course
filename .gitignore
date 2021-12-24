@@ -3,3 +3,4 @@
 */__pycache__
 /envudem
 api_key_configs.py
+credentials.json

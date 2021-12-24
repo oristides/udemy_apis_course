@@ -9,12 +9,13 @@ from resources.usuario import User, UserRegister, UserLogin, UserLogout, UserCon
 from resources.site import Sites, Site
 from flask_jwt_extended import JWTManager
 from blacklist import BLACKLIST
+from config import *
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///banco.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{USER}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['JWT_SECRET_KEY'] = 'DontTellAnyone'
+app.config['JWT_SECRET_KEY'] = JWT_SECRET_KEY
 banco.init_app(app)
 
 api = Api(app)

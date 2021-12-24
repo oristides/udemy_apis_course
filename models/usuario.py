@@ -1,13 +1,8 @@
 from sql_alchemy import banco
 from flask import request, url_for
-import api_key_configs
+from  config import *
 import requests
 
-
-MAILGUN_DOMAIN= api_key_configs.MAILGUN_DOMAIN
-MAILGUN_API_KEY=api_key_configs.MAILGUN_API_KEY
-FORM_TITLE= api_key_configs.FORM_TITLE 
-FROM_EMAIL= api_key_configs.FROM_EMAIL
 
 
 class UserModel(banco.Model):
