@@ -1,6 +1,6 @@
 import json
 
-with open('credentials.json') as f:
+with open('credentials.json', encoding='utf-8') as f:
 	config= json.load(f)
 
 
@@ -13,4 +13,3 @@ HOST=config['HOST']
 PORT=config['PORT']
 DATABASE=config['DATABASE']
 JWT_SECRET_KEY=config['JWT_SECRET_KEY']
-
