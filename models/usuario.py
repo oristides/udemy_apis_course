@@ -1,7 +1,7 @@
 from sql_alchemy import banco
 from flask import request, url_for
 from  config import *
-import requests
+from requests import post
 
 
 
@@ -26,7 +26,7 @@ class UserModel(banco.Model):
 		# http://127.0.0.1:5000/
 		#http://127.0.0.1:5000 
 		link = request.url_root[:-1] +  url_for('userconfirm', user_id= self.user_id)
-		return requests.post("https://api.mailgun.net/v3/{}/messages".format(MAILGUN_DOMAIN),
+		return post("https://api.mailgun.net/v3/{}/messages".format(MAILGUN_DOMAIN),
 			auth=("api", MAILGUN_API_KEY),
 			data={"from": '{}<{}>'.format(FORM_TITLE,FROM_EMAIL),
 			"to": self.email,
