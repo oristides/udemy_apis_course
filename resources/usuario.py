@@ -59,10 +59,7 @@ class UserRegister(Resource):
 		user.ativado = False # EVITA USUARIO MALISIOSO
 		try:
 			user.save_user()
-			try:
-				user.send_confirmation_email()
-			except:
-				return {'message':'Problem with Mailing api'}, 500 #Created
+			user.send_confirmation_email()
 		except:
 			user.delete_user()
 			traceback.print_exc()
